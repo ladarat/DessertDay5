@@ -13,6 +13,7 @@ public class MoreInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_info);
 
+        initInsatnces();
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
@@ -20,4 +21,10 @@ public class MoreInfoActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+    private void initInsatnces() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    
 }
