@@ -70,6 +70,7 @@ public class MoreInfoFragment extends Fragment {
             }
         });
         slidingTabLayout =(SlidingTabLayout) rootView.findViewById(R.id.slidingTabLayout);
+        slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
 
     }
