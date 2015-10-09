@@ -23,6 +23,8 @@ public class SumaryFragment extends Fragment {
     TextView tvDescription;
     ImageView tvImg;
 
+    private DessertItemDao selectedDao;
+
     public SumaryFragment() {
         super();
     }
@@ -50,10 +52,10 @@ public class SumaryFragment extends Fragment {
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
         tvImg = (ImageView) rootView.findViewById(R.id.img);
 
-        DessertItemDao selectedDao = DessrtListManager.getInstance().getSelectDao();
+        selectedDao = DessrtListManager.getInstance().getSelectDao(); //u can save onSaveInstancState
+
         tvName.setText(selectedDao.getName());
         tvDescription.setText(selectedDao.getDescription());
-
         Glide.with(getActivity())
                 .load(selectedDao.getImageURL())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)//Cache Big picture for each picture
