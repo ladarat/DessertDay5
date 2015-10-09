@@ -1,5 +1,6 @@
 package com.day4.enprog.dessertmarker.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -96,9 +97,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void busEventReceived(BusEventDessrt event){
+        Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
+        startActivity(intent);
 
     }
-    
+
 //    @Subscribe
 //    public void busEventReceived(BusEventDessrt event){
 //
