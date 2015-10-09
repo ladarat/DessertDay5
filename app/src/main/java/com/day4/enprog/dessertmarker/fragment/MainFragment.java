@@ -1,5 +1,6 @@
 package com.day4.enprog.dessertmarker.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.day4.enprog.dessertmarker.R;
+import com.day4.enprog.dessertmarker.activity.MoreInfoActivity;
 import com.day4.enprog.dessertmarker.adepter.DessertListAdepter;
 import com.day4.enprog.dessertmarker.dao.DessertItemCollectionDao;
 import com.day4.enprog.dessertmarker.manager.DessrtListManager;
@@ -65,6 +67,8 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //TODO: Handle ListView Item Click click change page
+                Intent intent = new Intent(getActivity(), MoreInfoActivity.class);
+                startActivity(intent);
             }
         });
 

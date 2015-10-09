@@ -23,7 +23,9 @@
             android:name="com.day4.enprog.dessertmarker.config.GlideConfiguration"
             android:value="GlideModule" />
 
-        <activity android:name=".activity.MoreInfoActivity" >
+        <activity
+            android:theme="@style/AppThemeWithActionBar"
+            android:name=".activity.MoreInfoActivity" >
         </activity>
     </application>
 
