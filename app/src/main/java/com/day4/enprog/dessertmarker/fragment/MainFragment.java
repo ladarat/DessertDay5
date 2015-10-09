@@ -73,7 +73,7 @@ public class MainFragment extends Fragment {
 
                 //Send Signal to Activity
                 DessertItemDao dao = DessrtListManager.getInstance().getDao().getData().get(position);
-                MainBus.getInstance().post(new BusEventDessrt(dao));// line for received durg
+                MainBus.getInstance().post(new BusEventDessrt(dao));// line for send dao
 
             }
         });
