@@ -10,8 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.day4.enprog.dessertmarker.R;
+import com.day4.enprog.dessertmarker.busevent.BusEventDessrt;
 import com.day4.enprog.dessertmarker.fragment.MainFragment;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
+import com.squareup.otto.Subscribe;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,4 +93,15 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         MainBus.getInstance().unregister(this);
     }
+
+    @Subscribe
+    public void busEventReceived(BusEventDessrt event){
+
+    }
+    
+//    @Subscribe
+//    public void busEventReceived(BusEventDessrt event){
+//
+//    }
+
 }

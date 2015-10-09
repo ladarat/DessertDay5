@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import com.day4.enprog.dessertmarker.R;
 import com.day4.enprog.dessertmarker.adepter.DessertListAdepter;
+import com.day4.enprog.dessertmarker.busevent.BusEventDessrt;
 import com.day4.enprog.dessertmarker.dao.DessertItemCollectionDao;
+import com.day4.enprog.dessertmarker.dao.DessertItemDao;
 import com.day4.enprog.dessertmarker.manager.DessrtListManager;
 import com.day4.enprog.dessertmarker.manager.http.HTTPManager;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
+import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 import java.io.IOException;
 
@@ -69,7 +72,8 @@ public class MainFragment extends Fragment {
 //   ---V1             startActivity(intent);
 
                 //Send Signal to Activity
-
+                DessertItemDao dao = DessrtListManager.getInstance().getDao().getData().get(position);
+                MainBus.getInstance().post(new BusEventDessrt(dao));
 
             }
         });
