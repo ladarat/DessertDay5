@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -64,6 +65,23 @@ public class MainFragment extends Fragment {
             @Override
             public void onRefresh() {
                 loadData();
+            }
+        });
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view,
+                                 int firstVisibleItem,
+                                 int visibleItemCount,
+                                 int totalItemCount) {
+                swipeRefreshLayout.setEnabled(firstVisibleItem == 0);
+                if(firstVisibleItem + visibleItemCount >= totalItemCount){
+                    //Load More
+                }
             }
         });
         loadData();
