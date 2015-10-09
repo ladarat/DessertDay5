@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
 //   ---V1             startActivity(intent);
 
                 //Send Signal to Activity
-                
+
 
             }
         });

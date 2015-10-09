@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.day4.enprog.dessertmarker.R;
 import com.day4.enprog.dessertmarker.fragment.MainFragment;
+import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,5 +78,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainBus.getInstance().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainBus.getInstance().unregister(this);
     }
 }
