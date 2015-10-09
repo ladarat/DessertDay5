@@ -29,6 +29,7 @@ import retrofit.Retrofit;
 public class MainFragment extends Fragment {
     ListView listView;
     DessertListAdepter dessertListAdepter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public MainFragment() {
         super();
@@ -58,16 +59,17 @@ public class MainFragment extends Fragment {
         listView.setAdapter(dessertListAdepter);
 
 
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
+        swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                
+                loadData();
             }
         });
+        loadData();
+    }
 
-
-
+    private void loadData() {
         Call<DessertItemCollectionDao> call = HTTPManager.getInstance().getService().loadDesserts();
 
         call.enqueue(new Callback<DessertItemCollectionDao>() {
@@ -93,7 +95,7 @@ public class MainFragment extends Fragment {
 
                     }
                 }
-
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
