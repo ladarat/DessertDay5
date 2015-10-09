@@ -2,6 +2,7 @@ package com.day4.enprog.dessertmarker.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,18 @@ public class MainFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.listView);
         dessertListAdepter = new DessertListAdepter();
         listView.setAdapter(dessertListAdepter);
+
+
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                
+            }
+        });
+
+
+
         Call<DessertItemCollectionDao> call = HTTPManager.getInstance().getService().loadDesserts();
 
         call.enqueue(new Callback<DessertItemCollectionDao>() {
