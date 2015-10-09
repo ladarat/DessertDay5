@@ -36,7 +36,7 @@
             android:ellipsize="end"
             android:lines="2"
             android:text="Descript Descript Descript Descript Descript Descript"
-            android:textColor="#ffffff"
+            android:textColor="@drawable/selector_color"
             android:textSize="18sp" />
     </LinearLayout>
 
