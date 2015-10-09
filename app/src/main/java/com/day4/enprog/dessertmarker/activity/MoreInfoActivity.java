@@ -54,7 +54,7 @@ public class MoreInfoActivity extends AppCompatActivity {
     }
     private Intent getShareIntent(){
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
+        intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
         intent.putExtra(Intent.EXTRA_TEXT, "Extra Text");
         return intent;
