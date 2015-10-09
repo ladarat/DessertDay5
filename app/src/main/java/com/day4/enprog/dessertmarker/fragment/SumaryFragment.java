@@ -2,8 +2,6 @@ package com.day4.enprog.dessertmarker.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +11,14 @@ import com.day4.enprog.dessertmarker.R;
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class MoreInfoFragment extends Fragment {
+public class SumaryFragment extends Fragment {
 
-    ViewPager viewPager;
-
-    public MoreInfoFragment() {
+    public SumaryFragment() {
         super();
     }
 
-    public static MoreInfoFragment newInstance() {
-        MoreInfoFragment fragment = new MoreInfoFragment();
+    public static SumaryFragment newInstance() {
+        SumaryFragment fragment = new SumaryFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -31,7 +27,7 @@ public class MoreInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_more_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_sumary, container, false);
         initInstances(rootView);
         return rootView;
     }
@@ -39,19 +35,6 @@ public class MoreInfoFragment extends Fragment {
     private void initInstances(View rootView) {
         // init instance with rootView.findViewById here
         //setRetainInstance(true);
-
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return SumaryFragment.newInstance();
-            }
-
-            @Override
-            public int getCount() {
-                return 3;
-            }
-        });
     }
 
     @Override

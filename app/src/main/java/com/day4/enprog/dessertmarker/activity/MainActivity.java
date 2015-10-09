@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void busEventReceived(BusEventDessrt event){
+
         Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
         startActivity(intent);
 
