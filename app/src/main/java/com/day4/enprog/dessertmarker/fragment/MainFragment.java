@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -58,6 +59,15 @@ public class MainFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.listView);
         dessertListAdepter = new DessertListAdepter();
         listView.setAdapter(dessertListAdepter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //TODO: Handle ListView Item Click click change page
+            }
+        });
+
 
 
         swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
