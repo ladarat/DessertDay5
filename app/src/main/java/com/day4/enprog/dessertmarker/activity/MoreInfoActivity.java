@@ -2,6 +2,7 @@ package com.day4.enprog.dessertmarker.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.day4.enprog.dessertmarker.R;
 import com.day4.enprog.dessertmarker.fragment.MoreInfoFragment;
@@ -15,7 +16,7 @@ public class MoreInfoActivity extends AppCompatActivity {
 
         initInsatnces();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.contentContainer, MoreInfoFragment.newInstance())
                     .commit();
@@ -26,5 +27,14 @@ public class MoreInfoActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-    
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
