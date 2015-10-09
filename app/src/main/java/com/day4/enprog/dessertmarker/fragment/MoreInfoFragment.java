@@ -9,13 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.day4.enprog.dessertmarker.R;
+import com.inthecheesefactory.thecheeselibrary.view.SlidingTabLayout;
 
 /**
  * Created by nuuneoi on 11/16/2014.
  */
 public class MoreInfoFragment extends Fragment {
 
+
     ViewPager viewPager;
+    SlidingTabLayout slidingTabLayout;
+
 
     public MoreInfoFragment() {
         super();
@@ -51,7 +55,23 @@ public class MoreInfoFragment extends Fragment {
             public int getCount() {
                 return 3;
             }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position){
+                    case 0:
+                        return "Summary";
+                    case 1:
+                        return "Ingredient";
+                    case 2:
+                        return "";
+                }
+                return super.getPageTitle(position);
+            }
         });
+        slidingTabLayout =(SlidingTabLayout) rootView.findViewById(R.id.slidingTabLayout);
+        slidingTabLayout.setViewPager(viewPager);
+
     }
 
     @Override
