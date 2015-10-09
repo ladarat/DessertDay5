@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.day4.enprog.dessertmarker.R;
 import com.day4.enprog.dessertmarker.busevent.BusEventDessrt;
 import com.day4.enprog.dessertmarker.fragment.MainFragment;
+import com.day4.enprog.dessertmarker.manager.DessrtListManager;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 import com.squareup.otto.Subscribe;
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void busEventReceived(BusEventDessrt event){
-
+        DessrtListManager.getInstance().setSelectDao(event.getDao());
         Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
         startActivity(intent);
 

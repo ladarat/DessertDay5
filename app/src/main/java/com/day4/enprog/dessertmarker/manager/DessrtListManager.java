@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.day4.enprog.dessertmarker.dao.DessertItemCollectionDao;
+import com.day4.enprog.dessertmarker.dao.DessertItemDao;
 import com.google.gson.Gson;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
@@ -22,6 +23,7 @@ public class DessrtListManager {
 
     private Context mContext;
     private DessertItemCollectionDao dao;
+    private DessertItemDao selectDao;
 
     private DessrtListManager() {
         mContext = Contextor.getInstance().getContext();
@@ -60,5 +62,11 @@ public class DessrtListManager {
 
     }
 
+    public DessertItemDao getSelectDao() {
+        return selectDao;
+    }
 
+    public void setSelectDao(DessertItemDao selectDao) {
+        this.selectDao = selectDao;
+    }
 }

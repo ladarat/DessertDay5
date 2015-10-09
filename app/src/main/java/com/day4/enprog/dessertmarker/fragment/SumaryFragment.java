@@ -5,13 +5,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.day4.enprog.dessertmarker.R;
+import com.day4.enprog.dessertmarker.dao.DessertItemDao;
+import com.day4.enprog.dessertmarker.manager.DessrtListManager;
 
 /**
  * Created by nuuneoi on 11/16/2014.
  */
 public class SumaryFragment extends Fragment {
+
+    TextView tvName;
+    TextView tvDescription;
+    ImageView tvImg;
 
     public SumaryFragment() {
         super();
@@ -35,6 +45,19 @@ public class SumaryFragment extends Fragment {
     private void initInstances(View rootView) {
         // init instance with rootView.findViewById here
         //setRetainInstance(true);
+
+        tvName = (TextView) rootView.findViewById(R.id.tvName);
+        tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
+        tvImg = (ImageView) rootView.findViewById(R.id.img);
+
+        DessertItemDao selectedDao = DessrtListManager.getInstance().getSelectDao();
+        tvName.setText(selectedDao.getName());
+        tvDescription.setText(selectedDao.getDescription());
+
+        Glide.with(getActivity())
+                .load(selectedDao.getImageURL())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)//Cache Big picture for each picture
+                .into(tvImg);
     }
 
     @Override
