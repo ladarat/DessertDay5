@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.day4.enprog.dessertmarker.R;
 import com.day4.enprog.dessertmarker.busevent.BusEventDessrt;
 import com.day4.enprog.dessertmarker.fragment.MainFragment;
+import com.day4.enprog.dessertmarker.fragment.MoreInfoFragment;
 import com.day4.enprog.dessertmarker.manager.DessrtListManager;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 import com.squareup.otto.Subscribe;
@@ -99,8 +101,20 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe
     public void busEventReceived(BusEventDessrt event){
         DessrtListManager.getInstance().setSelectDao(event.getDao());
-        Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
-        startActivity(intent);
+
+        FrameLayout  moreInfoContainer = (FrameLayout) findViewById(R.id.moreInfoContainer);
+
+        if (moreInfoContainer == null){
+            //mobile
+            Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
+            startActivity(intent);
+        }else {
+            //Tablet
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.moreInfoContainer, MoreInfoFragment.newInstance())
+                    .commit();
+        }
+
 
     }
 

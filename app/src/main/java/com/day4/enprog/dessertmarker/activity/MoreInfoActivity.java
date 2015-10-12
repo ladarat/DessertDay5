@@ -57,7 +57,7 @@ public class MoreInfoActivity extends AppCompatActivity {
         intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
         intent.putExtra(Intent.EXTRA_TEXT, "Extra Text");
-        intent.setPackage("com.instagram");
+//        intent.setPackage("com.instagram");
         return intent;
     }
 }
